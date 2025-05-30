@@ -1,0 +1,10 @@
+google-generativeai>=0.3.0
+python-dotenv>=1.0.0
+wikipedia>=1.4.0
+python-weather
+openmeteo-requests
+requests-cache 
+retry-requests 
+numpy 
+pandas
+meteostat
