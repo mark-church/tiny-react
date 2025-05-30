@@ -31,13 +31,19 @@ pip install -r requirements.txt
    ```
 
 3. Run the agent:
+
+```shell
+python3 agent.py "What is the current tempurature (in fahrenheit) in the city that won the superbowl in 1995?"
+```
+
+Or use the `TinyReAct` agent library directly:
+
 ```python
 from agent import TinyReAct
 
-# Initialize the agent with available tools
 tools = [
     add_numbers,
-    subtract_numbers,
+    subtract_numbers, 
     multiply_numbers,
     divide_numbers,
     get_temperature,
@@ -46,16 +52,18 @@ tools = [
     wikipedia_summary
 ]
 
-# Create agent instance
 agent = TinyReAct(tools=tools, ttl=10)
 
-# Ask a question
-result = agent.query("What is the current tempurature (in fahrenheit) in the city that won the superbowl in 1995?")
+query = "What is the current tempurature (in fahrenheit) in the city that won the superbowl in 1995?"
+
+result = agent.query(query)
 ```
 
 4. Example output
 
 ```
+Query: What is the current tempurature (in fahrenheit) in the city that won the superbowl in 1995?
+
 Thought1: The user is asking for the current temperature in the city that won the Super Bowl in 1995. My first step is to identify the winner of the Super Bowl in 1995. I will use the `wikipedia_summary` tool to find this information, as it provides a concise summary of historical events. This will allow me to identify the team, and subsequently, their home city.
 Action1: wikipedia_summary("Super Bowl 1995 winner", sentences=2)
 Observation1: Wikipedia page for 'Super Bowl 1995 winner' not found.
