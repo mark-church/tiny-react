@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import inspect
 import wikipedia
 import openmeteo_requests   
+import sys  
 
 
 class TextColor: 
@@ -273,11 +274,22 @@ class TinyReAct:
         output.append("-" * 50)
         return "\n".join(output)
 
-    
-def main():
+
+
+if __name__ == "__main__":
+
+    if len(sys.argv) > 1:
+        query = " ".join(sys.argv[1:])
+    else:
+        # query = "What is the temperature in fahrenheit right now in Chicago?"
+        # query = "What is (3 - 100) * 3 * (50 - 10) + 7?" 
+        # query = "What is the weather in London and what is 3 times that temperature plus 3?" 
+        # query = "Did more americans die in WW1 or WW2?"
+        query = "What is the current tempurature (in fahrenheit) in the city that won the superbowl in 1995?"
+
     tools = [
         add_numbers,
-        subtract_numbers,
+        subtract_numbers, 
         multiply_numbers,
         divide_numbers,
         get_temperature,
@@ -286,15 +298,5 @@ def main():
         wikipedia_summary
     ]
 
-    # query = "What is the temperature in fahrenheit right now in Chicago?"
-    # query = "What is (3 - 100) * 3 * (50 - 10) + 7?" 
-    # query = "What is the weather in London and what is 3 times that temperature plus 3?" 
-    # query = "Did more americans die in WW1 or WW2?"
-    query = "What is the current tempurature (in fahrenheit) in the city that won the superbowl in 1995?"
-
     agent = TinyReAct(tools=tools, ttl=10)
     result = agent.query(query)
-
-
-if __name__ == "__main__":
-    main()
