@@ -6,3 +6,4 @@ venv/
 mermaid/
 blog-post.md
 .cache.sqlite
+.gitignore
