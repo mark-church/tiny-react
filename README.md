@@ -7,8 +7,14 @@ A lightweight implementation of the [ReAct (Reasoning + Acting)](https://arxiv.o
 - Implements the ReAct pattern for structured reasoning and action taking
 - Integrates with Google's Gemini API for language model capabilities  
 - Includes tools for basic math operations, Wikipedia searches, and weather queries
-- Visualizes agent reasoning process using Mermaid diagrams
 - Configurable time-to-live (TTL) to prevent infinite loops
+
+## Structure
+
+Tiny ReAct works in a simple loop: you ask a question, and it thinks through the problem step by step. It uses Gemini to reason, and if it needs to do something (like look up info or do math), it calls a tool. If it hits an error, it tries again. This keeps going until it finds an answer or runs out of tries. 
+
+<img src="react.png" alt="Agent Reasoning Loop" width="600"/>
+
 
 ## Usage
 
