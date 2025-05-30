@@ -1,9 +1,0 @@
-.env
-__pycache__/
-venv/
-.DS_Store
-.cursorignore
-mermaid/
-blog-post.md
-.cache.sqlite
-.gitignore
